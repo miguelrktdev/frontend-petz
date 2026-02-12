@@ -9,7 +9,7 @@ export const AuthLayout = () => {
         <Outlet />
       </div>
       <img
-        className="hidden lg:block object-cover w-full min-h-full max-h-full rounded-lg"
+        className="hidden lg:block object-cover w-full min-h-full max-h-full rounded-md"
         src="./src/assets/auth_bg.jpg"
       />
     </div>
