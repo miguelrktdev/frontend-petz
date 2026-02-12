@@ -14,8 +14,8 @@ export function App() {
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="verification-email" element={<VerificationEmailPage />} />
         </Route>
-        <Route path="verification-email" element={<VerificationEmailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

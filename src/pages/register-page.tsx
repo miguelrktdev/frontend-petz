@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { InputGroup, InputGroupButton } from "@/components/ui/input-group"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
+import { useOTPStore } from "@/contexts/otp-context"
 import { useRegister } from "@/hooks/use-user"
 import { ROUTES } from "@/paths"
 import { userSchemas } from "@/schemas/user-schemas"
@@ -23,9 +24,11 @@ export const RegisterPage = () => {
     resolver: zodResolver(userSchemas.register),
   })
   const { mutate, isPending } = useRegister()
+  const { saveEmail } = useOTPStore()
   const [showPassword, setShowPassword] = React.useState(false)
 
   const handleRegisterUser: SubmitHandler<UserRegisterSchemaInfer> = (data: UserRegisterSchemaInfer) => {
+    saveEmail(data.email)
     mutate(data)
   }
 
