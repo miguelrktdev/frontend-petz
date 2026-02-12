@@ -67,12 +67,9 @@ export const RegisterPage = () => {
           </div>
         )}
         <Separator />
-        <span className="block text-center">
-          Já possui uma conta?{" "}
-          <Button variant={"link"} className={"text-base"}>
-            <Link to={ROUTES.login}>Faça login</Link>
-          </Button>
-        </span>
+        <Button size={"lg"} variant={"secondary"} className={"w-full"}>
+          <Link to={ROUTES.login}>Já tenho uma conta</Link>
+        </Button>
       </main>
     </div>
   )
