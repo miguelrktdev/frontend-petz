@@ -3,10 +3,13 @@ import { Input } from "@/components/ui/input"
 import { InputGroup, InputGroupButton } from "@/components/ui/input-group"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
+import { useRegister } from "@/hooks/use-user"
 import { ROUTES } from "@/paths"
 import { userSchemas } from "@/schemas/user-schemas"
 import type { UserRegisterSchemaInfer } from "@/types/user-types"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loading01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import React from "react"
 import { useForm, type SubmitHandler } from "react-hook-form"
 import { Link } from "react-router-dom"
@@ -19,10 +22,11 @@ export const RegisterPage = () => {
   } = useForm<UserRegisterSchemaInfer>({
     resolver: zodResolver(userSchemas.register),
   })
+  const { mutate, isPending } = useRegister()
   const [showPassword, setShowPassword] = React.useState(false)
 
   const handleRegisterUser: SubmitHandler<UserRegisterSchemaInfer> = (data: UserRegisterSchemaInfer) => {
-    console.log(data)
+    mutate(data)
   }
 
   return (
@@ -50,7 +54,7 @@ export const RegisterPage = () => {
             <Textarea className="h-42" placeholder="Nos conte um pouco sobre você..." {...register("bio")} />
           </div>
           <Button type="submit" className={"w-full"} size={"lg"}>
-            Cadastrar
+            {isPending ? <HugeiconsIcon icon={Loading01Icon} className="animate-spin" /> : "Cadastrar"}
           </Button>
         </form>
         {Object.keys(errors).length > 0 && (
