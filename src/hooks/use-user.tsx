@@ -1,3 +1,4 @@
+import { ROUTES } from "@/paths"
 import { api } from "@/services/axios"
 import type { UserRegisterSchemaInfer } from "@/types/user-types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -21,7 +22,7 @@ export function useRegister() {
       console.log(data.message)
       querClient.invalidateQueries({ queryKey: ["user"] })
       toast.success(data.message, { position: "top-left", className: "w-fit" })
-      navigate("/verification-email")
+      navigate(ROUTES.verificationEmail)
     },
     onError: (error: AxiosError<{ message: string }>) => {
       const errorMessage = error.response?.data.message
