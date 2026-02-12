@@ -133,3 +133,18 @@ html {
     }
 }
 
+
+@theme {
+  --animate-slideInLeft: slideInLeft 600ms ease-in-out;
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-32px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
