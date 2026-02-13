@@ -1,3 +1,3 @@
 export const FeedPage = () => {
-  return <div>FeedPage</div>
+    return <div>FeedPage</div>
 }

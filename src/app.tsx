@@ -7,17 +7,17 @@ import { RegisterPage } from "./pages/register-page"
 import { VerificationEmailPage } from "./pages/verification-email-page"
 
 export function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<FeedPage />} />
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="verification-email" element={<VerificationEmailPage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </div>
-  )
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<FeedPage />} />
+                <Route element={<AuthLayout />}>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="verification-email" element={<VerificationEmailPage />} />
+                </Route>
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        </div>
+    )
 }

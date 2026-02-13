@@ -8,11 +8,11 @@ Frontend da **Petz**, uma rede social para pets, construída com foco em **compo
 
 O Petz Frontend é responsável por toda a interface do usuário da aplicação, permitindo:
 
-* Cadastro e autenticação de usuários
-* Gerenciamento de perfis de pets
-* Visualização de feed
-* Criação e interação com posts (curtidas, comentários)
-* Seguir e deixar de seguir pets
+- Cadastro e autenticação de usuários
+- Gerenciamento de perfis de pets
+- Visualização de feed
+- Criação e interação com posts (curtidas, comentários)
+- Seguir e deixar de seguir pets
 
 O projeto foi pensado para ser **escalável**, **performático** e **fácil de manter**.
 
@@ -20,16 +20,16 @@ O projeto foi pensado para ser **escalável**, **performático** e **fácil de m
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **React** — Biblioteca principal para construção da UI
-* **TypeScript** — Tipagem estática e maior segurança
-* **Vite** — Bundler rápido para desenvolvimento
-* **Tailwind CSS** — Estilização utilitária
-* **shadcn/ui** — Componentes acessíveis e reutilizáveis
-* **React Router DOM** — Gerenciamento de rotas
-* **Axios** — Consumo da API
-* **React Query** — Requisições HTTP
-* **Zod** — Validação de formulários e dados
-* **React Hook Form** — Controle de formulários
+- **React** — Biblioteca principal para construção da UI
+- **TypeScript** — Tipagem estática e maior segurança
+- **Vite** — Bundler rápido para desenvolvimento
+- **Tailwind CSS** — Estilização utilitária
+- **shadcn/ui** — Componentes acessíveis e reutilizáveis
+- **React Router DOM** — Gerenciamento de rotas
+- **Axios** — Consumo da API
+- **React Query** — Requisições HTTP
+- **Zod** — Validação de formulários e dados
+- **React Hook Form** — Controle de formulários
 
 ---
 
@@ -37,10 +37,10 @@ O projeto foi pensado para ser **escalável**, **performático** e **fácil de m
 
 O projeto segue um padrão de **design consistente**, utilizando:
 
-* Tokens de cores do Tailwind
-* Componentes do shadcn/ui
-* Layouts responsivos (mobile first)
-* Feedback visual para loading, erro e sucesso
+- Tokens de cores do Tailwind
+- Componentes do shadcn/ui
+- Layouts responsivos (mobile first)
+- Feedback visual para loading, erro e sucesso
 
 ---
 
@@ -70,9 +70,9 @@ src/
 
 A autenticação é baseada em **JWT**, integrada com o backend:
 
-* Access Token armazenado em memória
-* Refresh Token gerenciado pelo backend
-* Rotas protegidas via guards
+- Access Token armazenado em memória
+- Refresh Token gerenciado pelo backend
+- Rotas protegidas via guards
 
 ---
 
@@ -93,9 +93,9 @@ A autenticação é baseada em **JWT**, integrada com o backend:
 
 Centralizada em `services/api.ts`:
 
-* Interceptors para token
-* Tratamento global de erros
-* Padronização de responses
+- Interceptors para token
+- Tratamento global de erros
+- Padronização de responses
 
 ---
 
