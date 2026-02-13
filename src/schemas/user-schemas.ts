@@ -18,21 +18,35 @@ const passwordSchema = z
 
 const userRegisterSchema = z.object({
     name: z.string().min(1, { message: "Nome é obrigatório" }).max(100),
-    email: z.string().min(1, { message: "E-mail obrigatório" }).email({ message: "Email inválido" }),
+    email: z
+        .string()
+        .min(1, { message: "E-mail obrigatório" })
+        .email({ message: "Email inválido" }),
     username: z
         .string()
         .min(1, { message: "Nome de usuário é obrigatório" })
         .min(3, { message: "Nome de usuário deve ter no mínimo 3 caracteres" })
-        .max(30, { message: "Nome de usuário deve ter no máximo 30 caracteres" }),
+        .max(30, {
+            message: "Nome de usuário deve ter no máximo 30 caracteres",
+        }),
     password: passwordSchema,
     bio: z.string().min(1, { message: "Bio é obrigatória" }).max(160),
+})
+
+const userLoginSchema = z.object({
+    email: z
+        .string()
+        .min(1, { message: "E-mail obrigatório" })
+        .email({ message: "Email inválido" }),
 })
 
 const verificationEmailSchema = z.object({
     code: z
         .string()
         .min(1, { message: "Código OTP obrigatório" })
-        .regex(/^\d{6}$/, { message: "O código OTP deve conter exatamente 6 dígitos" }),
+        .regex(/^\d{6}$/, {
+            message: "O código OTP deve conter exatamente 6 dígitos",
+        }),
 })
 
 export const userSchemas = {
