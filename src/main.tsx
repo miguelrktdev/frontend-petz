@@ -10,12 +10,12 @@ import { BrowserRouter as Router } from "react-router-dom"
 import { queryClient } from "./services/query-client.ts"
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Router>
-      <QueryClientProvider client={queryClient}>
-        <Toaster />
-        <App />
-      </QueryClientProvider>
-    </Router>
-  </StrictMode>,
+    <StrictMode>
+        <Router>
+            <QueryClientProvider client={queryClient}>
+                <Toaster />
+                <App />
+            </QueryClientProvider>
+        </Router>
+    </StrictMode>,
 )
