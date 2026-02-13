@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { InputGroup, InputGroupButton } from "@/components/ui/input-group"
 import { Separator } from "@/components/ui/separator"
-import { useRegister } from "@/hooks/use-user"
+import { useLogin } from "@/hooks/use-user"
 import { ROUTES } from "@/paths"
 import { userSchemas } from "@/schemas/user-schemas"
-import type { UserRegisterSchemaInfer } from "@/types/user-types"
+import type { UserLoginSchemaInfer } from "@/types/user-types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loading01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
@@ -14,82 +14,61 @@ import { useForm, type SubmitHandler } from "react-hook-form"
 import { Link } from "react-router-dom"
 
 export const LoginPage = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<UserRegisterSchemaInfer>({
-        resolver: zodResolver(userSchemas.register),
-    })
-    const { mutate, isPending } = useRegister()
-    const [showPassword, setShowPassword] = React.useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserLoginSchemaInfer>({
+    resolver: zodResolver(userSchemas.login),
+  })
+  const { mutate, isPending } = useLogin()
+  const [showPassword, setShowPassword] = React.useState(false)
 
-    const handleRegisterUser: SubmitHandler<UserRegisterSchemaInfer> = (
-        data: UserRegisterSchemaInfer,
-    ) => {
-        window.localStorage.setItem("email", data.email)
-        mutate(data)
-    }
+  const handleRegisterUser: SubmitHandler<UserLoginSchemaInfer> = (data: UserLoginSchemaInfer) => {
+    mutate(data)
+  }
 
-    return (
-        <div className="h-full flex flex-col items-center justify-center">
-            <main className="max-w-80 space-y-6 animate-slideInLeft">
-                <div className="space-y-1 text-center">
-                    <h1 className="text-2xl lg:text-3xl font-medium">
-                        Entre em sua conta! 🐶
-                    </h1>
-                    <p className="text-md lg:text-lg text-stone-400">
-                        Entre em sua conta para conhecer o incrível mundo dos
-                        pets
-                    </p>
-                </div>
-                <form
-                    className="space-y-6"
-                    onSubmit={handleSubmit(handleRegisterUser)}
-                >
-                    <div className="space-y-3">
-                        <Input
-                            placeholder="Digite seu email..."
-                            {...register("email")}
-                        />
-                        <InputGroup>
-                            <Input
-                                placeholder="Digite sua senha..."
-                                {...register("password")}
-                                type={showPassword ? "text" : "password"}
-                            />
-                            <InputGroupButton
-                                onClick={() => setShowPassword((prev) => !prev)}
-                            >
-                                {showPassword ? "Esconder" : "Mostrar"}
-                            </InputGroupButton>
-                        </InputGroup>
-                    </div>
-                    <Button type="submit" className={"w-full"} size={"lg"}>
-                        {isPending ? (
-                            <HugeiconsIcon
-                                icon={Loading01Icon}
-                                className="animate-spin"
-                            />
-                        ) : (
-                            "Fazer login"
-                        )}
-                    </Button>
-                </form>
-                {Object.keys(errors).length > 0 && (
-                    <div className="space-y-1">
-                        {Object.entries(errors).map(([field, error]) => (
-                            <p key={field} className="text-sm text-red-500">
-                                {error.message}
-                            </p>
-                        ))}
-                    </div>
-                )}
-                <Separator />
-                <Button size={"lg"} variant={"secondary"} className={"w-full"}>
-                    <Link to={ROUTES.register}>Ainda não tenho uma conta</Link>
-                </Button>
-            </main>
+  return (
+    <div className="h-full flex flex-col items-center justify-center">
+      <main className="max-w-80 space-y-6 animate-slideInLeft">
+        <div className="space-y-1 text-center">
+          <h1 className="text-2xl lg:text-3xl font-medium">Entre em sua conta! 🐶</h1>
+          <p className="text-md lg:text-lg text-stone-400">
+            Entre em sua conta para conhecer o incrível mundo dos pets
+          </p>
         </div>
-    )
+        <form className="space-y-6" onSubmit={handleSubmit(handleRegisterUser)}>
+          <div className="space-y-3">
+            <Input placeholder="Digite seu email..." {...register("email")} />
+            <InputGroup>
+              <Input
+                placeholder="Digite sua senha..."
+                {...register("password")}
+                type={showPassword ? "text" : "password"}
+              />
+              <InputGroupButton onClick={() => setShowPassword((prev) => !prev)}>
+                {showPassword ? "Esconder" : "Mostrar"}
+              </InputGroupButton>
+            </InputGroup>
+          </div>
+          <Button type="submit" className={"w-full"} size={"lg"}>
+            {isPending ? <HugeiconsIcon icon={Loading01Icon} className="animate-spin" /> : "Fazer login"}
+          </Button>
+        </form>
+        {Object.keys(errors).length > 0 && (
+          <div className="space-y-1">
+            {Object.entries(errors).map(([field, error]) => (
+              <p key={field} className="text-sm text-red-500">
+                {error.message}
+              </p>
+            ))}
+          </div>
+        )}
+        <Separator />
+        <Button size={"lg"} variant={"secondary"} className={"w-full"}>
+          <Link to={ROUTES.register}>Ainda não tenho uma conta</Link>
+        </Button>
+      </main>
+    </div>
+  )
 }

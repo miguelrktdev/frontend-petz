@@ -38,6 +38,7 @@ const userLoginSchema = z.object({
         .string()
         .min(1, { message: "E-mail obrigatório" })
         .email({ message: "Email inválido" }),
+    password: z.string().min(1, { message: "Senha obrigatória" }),
 })
 
 const verificationEmailSchema = z.object({
@@ -52,4 +53,5 @@ const verificationEmailSchema = z.object({
 export const userSchemas = {
     register: userRegisterSchema,
     verificationEmail: verificationEmailSchema,
+    login: userLoginSchema,
 }
